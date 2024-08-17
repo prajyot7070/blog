@@ -66,6 +66,7 @@ blogRouter.get('/bulk', async (c) => {
 
 //getting specific blog
 blogRouter.get('/:id', async (c) => {
+    // const id = c.req.param('id');
     const prisma = new PrismaClient({
 		datasourceUrl: c.env?.DATABASE_URL	,
 	}).$extends(withAccelerate());
@@ -88,7 +89,7 @@ blogRouter.get('/:id', async (c) => {
         })
         return c.json({
             blog
-        })    
+        });    
     } catch (error) {
         c.status(411);
         return c.json({
@@ -99,7 +100,7 @@ blogRouter.get('/:id', async (c) => {
 })
 
 //creating a blog
-blogRouter.post('/create/', async (c) => {
+blogRouter.post('/create', async (c) => {
     const prisma = new PrismaClient({
 		datasourceUrl: c.env?.DATABASE_URL	,
 	}).$extends(withAccelerate());
