@@ -54,9 +54,9 @@ ExampleTheme CSS
   }
   
   .editor-container {
-    margin: 20px auto 20px auto;
+    /* margin: 20px auto 20px auto; */
     border-radius: 2px;
-    max-width: 60%;
+    max-width: inherit;
     color: #000;
     position: relative;
     line-height: 20px;
@@ -64,6 +64,20 @@ ExampleTheme CSS
     text-align: left;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+  }
+
+  .editor-container-publish {
+    margin: 20px auto 20px auto;
+    border-radius: 2px;
+    width: 60%;
+    color: #000;
+    position: relative;
+    line-height: 20px;
+    font-weight: 400;
+    text-align: left;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  
   }
   
   .editor-inner {

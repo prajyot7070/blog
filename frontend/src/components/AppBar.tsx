@@ -1,22 +1,31 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Avatar } from "./BlogCard";
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
 import axios from "axios";
 import { BACKEND_URL } from "../config";
-import { CreateBlogInput } from "@prajyot_mane/blogapp-commons";
+// import { CreateBlogInput } from "@prajyot_mane/blogapp-commons";
 
 export const AppBar = ({type}: {type: "publish" | ""}) => {
     const navigate = useNavigate();
-    const [createBlogInput, setCreateBlogInput] = useState<CreateBlogInput>();
+    // const [createBlogInput, setCreateBlogInput] = useState<CreateBlogInput>();
     const handlePublish = useCallback(async () => {
         // Assuming you have access to the title and content
         const title = localStorage.getItem('editorTitle') || "Untitled";
         const content = localStorage.getItem('editorContent') || "";
         const token = localStorage.getItem('token');
-        setCreateBlogInput({
+        
+
+
+        // setCreateBlogInput({
+        //     title: title,
+        //     content: content
+        // })
+
+        const blogInput = {
             title: title,
-            content: content
-        })
+            content: content,
+            published: true
+          }
 
         if (content === "") {
             alert("No content to publish!");
@@ -24,12 +33,14 @@ export const AppBar = ({type}: {type: "publish" | ""}) => {
         }
 
         try {
-            const response = await axios.post(`${BACKEND_URL}/api/v1/blog/create`, createBlogInput, {
+            const response = await axios.post(`${BACKEND_URL}/api/v1/blog/create`, blogInput, {
                 headers: {
                     'Authorization':token
                 }
             });
-
+            localStorage.setItem('editorTitle', "");
+            localStorage.setItem('editorContent', "");
+            alert("Blog posted Successfully!!!");
             navigate("/blogs")
         } catch (error) {
             console.error("Error publishing blog:", error);
