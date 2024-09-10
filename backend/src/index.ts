@@ -1,7 +1,6 @@
 // ****** TODO ******
-// [ ] - Zod Validations
+// [*] - Zod Validations
 // [ ] - Password Hashing
-// [ ] - Monorepo using turborepo
 // [ ] - Scheduling Posts
 // [ ] - DOB, Publish date maybe categories/tags , likes
 // [ ] - UI (Support GIF's, Imgs use CDN's, Read Later, Dark-Light mode,

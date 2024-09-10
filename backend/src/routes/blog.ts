@@ -115,7 +115,10 @@ blogRouter.post('/create', async (c) => {
         data: {
             title: body.title,
             content: body.content,
-            authorId: userId
+            authorId: userId,
+            likesCount: 0,
+            published: true,
+            publishedAt: new Date(),
         }
     })
 	return c.json({
@@ -124,6 +127,8 @@ blogRouter.post('/create', async (c) => {
     })
 })
 
+
+// 
 //updating a blog
 blogRouter.put('/:id',async (c) => {
     const prisma = new PrismaClient({
